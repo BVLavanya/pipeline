@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  environment {
+    Name = 'Lavanya'
+  }
   stages {
     stage ('BUILD') {
     steps {
@@ -10,15 +13,7 @@ pipeline {
         '''  
     }
   }
-    stage ('DEPLOY') {
-    steps {
-      echo "This is Deploy stage"
-      sh '''
-         sleep 5
-         exit 0
-        ''' 
-    }
-    }
+  
     stage ('TEST') {
       parallel {
         stage ('Test with junit') {
@@ -32,6 +27,16 @@ pipeline {
           }
         }
       }
+    }
+
+    stage ('DEPLOY') {
+    steps {
+      echo "This is Deploy stage"
+      sh '''
+         sleep 5
+         exit 0
+        ''' 
+    }
     }
   }
 }
