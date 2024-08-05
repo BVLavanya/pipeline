@@ -1,7 +1,8 @@
 pipeline {
   agent any
-  environment {
-    Name = 'Lavanya'
+  parameters {
+    string defaultValue: 'Test', description: 'Environment to deploy', name: 'Environment', trim: true
+    choice choices: ['main', 'dev', 'master'], description: 'Build the pipeline job on particular branch', name: 'Branch'
   }
   stages {
     stage ('BUILD') {
