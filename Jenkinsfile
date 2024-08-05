@@ -8,6 +8,7 @@ pipeline {
     steps {
       echo "This is build stage"
       sh '''
+          echo $Name
           sleep 5
           exit 0
         '''  
