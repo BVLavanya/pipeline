@@ -31,10 +31,6 @@ pipeline {
             echo "This is tested with selenium"
           }
         }
-    steps {
-      echo "This is Test stage"
-      sh 'sleep 5'
-       }
       }
     }
   }
