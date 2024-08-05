@@ -4,12 +4,19 @@ pipeline {
     string defaultValue: 'Test', description: 'Environment to deploy', name: 'Environment', trim: true
     choice choices: ['main', 'dev', 'master'], description: 'Build the pipeline job on particular branch', name: 'Branch'
   }
+
+  environment {
+    Deploy_Branch = "$Branch"
+    Deploy_Env = "$Environment"
+  }
   stages {
     stage ('BUILD') {
     steps {
-      echo "This is build stage"
+      echo "Deploying to ${params.Environment}"
+      echo "code from branch ${params.$Branch}"
       sh '''
-          echo $Name
+          echo Deploying to ${Environment}
+          echo Code from ${Branch} branch
           sleep 5
           exit 0
         '''  
